@@ -100,10 +100,6 @@ public class Fraction {
     }
 
     private long lcm(long number1, long number2) {
-        if (number1 == 0 || number2 == 0) {
-            return 0;
-        } else {
-            return Math.abs(number1 * number2) / gcd(number1, number2);
-        }
+        return (number1 == 0 || number2 == 0) ? 0 : Math.abs(number1 * number2) / gcd(number1, number2);
     }
 }
