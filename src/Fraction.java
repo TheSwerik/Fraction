@@ -5,7 +5,7 @@ public class Fraction {
     /**
      * Creates a Fraction from {@code numerator} and {@code denominator}
      *
-     * @param numerator long
+     * @param numerator   long
      * @param denominator long
      */
     public Fraction(long numerator, long denominator) {
@@ -33,20 +33,19 @@ public class Fraction {
     }
 
     // Operations with other Fraction:
+
     /**
-     *
      * @param newFraction Fraction
      * @return this Fraction with {@code newFraction} added to it
      */
     public Fraction add(Fraction newFraction) {
         long lcm = lcm(this.denominator, newFraction.getDenominator());
-        this.numerator = (this.numerator / lcm) * this.numerator / lcm + (newFraction.getNumerator() / lcm) * newFraction.getNumerator();
-        this.denominator *= (this.denominator / lcm);
+        this.numerator = (lcm / this.denominator) * this.numerator + (lcm / newFraction.getDenominator()) * newFraction.getNumerator();
+        this.denominator = lcm;
         return this.reduce();
     }
 
     /**
-     *
      * @param newFraction Fraction
      * @return this Fraction subtracted by {@code newFraction}
      */
@@ -55,7 +54,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param newFraction Fraction
      * @return this Fraction multiplied by {@code newFraction}
      */
@@ -66,7 +64,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param newFraction Fraction
      * @return this Fraction divided by {@code newFraction}
      */
@@ -77,8 +74,8 @@ public class Fraction {
     }
 
     // Operations with primitive Types:
+
     /**
-     *
      * @param number long
      * @return this Fraction multiplied by {@code number}
      */
@@ -88,7 +85,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param number long
      * @return this Fraction with {@code number} to it
      */
@@ -98,7 +94,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param number long
      * @return this Fraction subtracted by {@code number}
      */
@@ -108,7 +103,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param number long
      * @return this Fraction divided by {@code number}
      */
@@ -124,14 +118,16 @@ public class Fraction {
      */
     public Fraction reduce() {
         long gcd = gcd(this.numerator, this.denominator);
-        this.numerator /= gcd;
-        this.denominator /= gcd;
+        if (gcd != 0) {
+            this.numerator /= gcd;
+            this.denominator /= gcd;
+        }
         return this;
     }
 
     //getter:
+
     /**
-     *
      * @return the current numerator as long
      */
     public long getNumerator() {
@@ -139,7 +135,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @return the current denominator as long
      */
     public long getDenominator() {
@@ -147,7 +142,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @return Fraction as String in the format: n/d
      */
     public String toString() {
@@ -157,7 +151,6 @@ public class Fraction {
     //Utils:
 
     /**
-     *
      * @param number1 long
      * @param number2 long
      * @return the greatest common divisor of {@code number1} and {@code number2}
@@ -172,7 +165,6 @@ public class Fraction {
     }
 
     /**
-     *
      * @param number1 long
      * @param number2 long
      * @return the least common multiple of {@code number1} and {@code number2}
