@@ -138,8 +138,8 @@ public class Fraction {
         Fraction tempA = new Fraction(Math.sqrt((double) returnFraction.numerator));
         Fraction tempB = new Fraction(Math.sqrt((double) returnFraction.denominator));
         tempA.divide(tempB);
-        returnFraction.numerator = tempA.getNumerator();
-        returnFraction.denominator = tempB.getNumerator();
+        returnFraction.numerator = tempA.divide(tempB).getNumerator();
+        returnFraction.denominator = tempA.divide(tempB).getDenominator();
         return returnFraction.reduce();
     }
 
