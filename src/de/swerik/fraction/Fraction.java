@@ -120,8 +120,11 @@ public class Fraction {
      * @return the sqareroot of the Fraction
      */
     public Fraction sqrt() {
-        this.numerator = (long) Math.sqrt((double) this.numerator);
-        this.denominator = (long) Math.sqrt((double) this.denominator);
+        Fraction tempA = new Fraction(Math.sqrt((double) this.numerator));
+        Fraction tempB = new Fraction(Math.sqrt((double) this.denominator));
+        tempA.divide(tempB);
+        this.numerator = tempA.getNumerator();
+        this.denominator = tempB.getNumerator();
         return this.reduce();
     }
 
