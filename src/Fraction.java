@@ -40,7 +40,10 @@ public class Fraction {
      */
     public Fraction add(Fraction newFraction) {
         long lcm = lcm(this.denominator, newFraction.getDenominator());
+//        System.out.println((lcm / this.denominator) * this.numerator);
+//        System.out.println((lcm / newFraction.getDenominator()) * newFraction.getNumerator());
         this.numerator = (lcm / this.denominator) * this.numerator + (lcm / newFraction.getDenominator()) * newFraction.getNumerator();
+//        System.out.println(this.numerator);
         this.denominator = lcm;
         return this.reduce();
     }
@@ -121,6 +124,10 @@ public class Fraction {
         if (gcd != 0) {
             this.numerator /= gcd;
             this.denominator /= gcd;
+        }
+        if (this.denominator < 0) {
+            this.denominator = -this.denominator;
+            this.numerator = -this.numerator;
         }
         return this;
     }
