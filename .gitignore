@@ -98,3 +98,4 @@ fabric.properties
 
 *.iml
 /.idea/*
+!/out/artifacts/Fraction_jar/*.jar
