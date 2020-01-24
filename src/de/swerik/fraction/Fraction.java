@@ -117,6 +117,34 @@ public class Fraction {
     }
 
     /**
+     * @return the sqareroot of the Fraction
+     */
+    public Fraction sqrt() {
+        this.numerator = (long) Math.sqrt((double) this.numerator);
+        this.denominator = (long) Math.sqrt((double) this.denominator);
+        return this.reduce();
+    }
+
+    /**
+     * @return the Fraction to the power of 2
+     */
+    public Fraction pow2() {
+        this.numerator *= this.numerator;
+        this.denominator *= this.denominator;
+        return this.reduce();
+    }
+
+    /**
+     * @param n long
+     * @return the Fraction to the power of {@code n}
+     */
+    public Fraction pow(long n) {
+        this.numerator = (long) Math.pow((double) this.numerator, (double) n);
+        this.denominator = (long) Math.pow((double) this.denominator, (double) n);
+        return this.reduce();
+    }
+
+    /**
      * reduces this de.swerik.fraction.Fraction as much as possible
      *
      * @return this de.swerik.fraction.Fraction but reduced
