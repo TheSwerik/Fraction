@@ -1,9 +1,11 @@
+package de.swerik.fraction;
+
 public class Fraction {
     private long numerator;
     private long denominator;
 
     /**
-     * Creates a Fraction from {@code numerator} and {@code denominator}
+     * Creates a de.swerik.fraction.Fraction from {@code numerator} and {@code denominator}
      *
      * @param numerator   long
      * @param denominator long
@@ -15,7 +17,7 @@ public class Fraction {
     }
 
     /**
-     * Creates a Fraction from {@code decimal}
+     * Creates a de.swerik.fraction.Fraction from {@code decimal}
      *
      * @param decimal long
      */
@@ -32,11 +34,11 @@ public class Fraction {
         this.reduce();
     }
 
-    // Operations with other Fraction:
+    // Operations with other de.swerik.fraction.Fraction:
 
     /**
-     * @param newFraction Fraction
-     * @return this Fraction with {@code newFraction} added to it
+     * @param newFraction de.swerik.fraction.Fraction
+     * @return this de.swerik.fraction.Fraction with {@code newFraction} added to it
      */
     public Fraction add(Fraction newFraction) {
         long lcm = lcm(this.denominator, newFraction.getDenominator());
@@ -49,16 +51,16 @@ public class Fraction {
     }
 
     /**
-     * @param newFraction Fraction
-     * @return this Fraction subtracted by {@code newFraction}
+     * @param newFraction de.swerik.fraction.Fraction
+     * @return this de.swerik.fraction.Fraction subtracted by {@code newFraction}
      */
     public Fraction subtract(Fraction newFraction) {
         return this.add(new Fraction(-newFraction.getNumerator(), newFraction.getDenominator()));
     }
 
     /**
-     * @param newFraction Fraction
-     * @return this Fraction multiplied by {@code newFraction}
+     * @param newFraction de.swerik.fraction.Fraction
+     * @return this de.swerik.fraction.Fraction multiplied by {@code newFraction}
      */
     public Fraction multiply(Fraction newFraction) {
         this.numerator *= newFraction.getNumerator();
@@ -67,8 +69,8 @@ public class Fraction {
     }
 
     /**
-     * @param newFraction Fraction
-     * @return this Fraction divided by {@code newFraction}
+     * @param newFraction de.swerik.fraction.Fraction
+     * @return this de.swerik.fraction.Fraction divided by {@code newFraction}
      */
     public Fraction divide(Fraction newFraction) {
         this.numerator *= newFraction.getDenominator();
@@ -80,7 +82,7 @@ public class Fraction {
 
     /**
      * @param number long
-     * @return this Fraction multiplied by {@code number}
+     * @return this de.swerik.fraction.Fraction multiplied by {@code number}
      */
     public Fraction add(long number) {
         this.numerator += number * this.denominator;
@@ -89,7 +91,7 @@ public class Fraction {
 
     /**
      * @param number long
-     * @return this Fraction with {@code number} to it
+     * @return this de.swerik.fraction.Fraction with {@code number} to it
      */
     public Fraction subtract(long number) {
         this.numerator -= number * this.denominator;
@@ -98,7 +100,7 @@ public class Fraction {
 
     /**
      * @param number long
-     * @return this Fraction subtracted by {@code number}
+     * @return this de.swerik.fraction.Fraction subtracted by {@code number}
      */
     public Fraction multiply(long number) {
         this.numerator *= number;
@@ -107,7 +109,7 @@ public class Fraction {
 
     /**
      * @param number long
-     * @return this Fraction divided by {@code number}
+     * @return this de.swerik.fraction.Fraction divided by {@code number}
      */
     public Fraction divide(long number) {
         this.denominator *= number;
@@ -115,9 +117,9 @@ public class Fraction {
     }
 
     /**
-     * reduces this Fraction as much as possible
+     * reduces this de.swerik.fraction.Fraction as much as possible
      *
-     * @return this Fraction but reduced
+     * @return this de.swerik.fraction.Fraction but reduced
      */
     public Fraction reduce() {
         long gcd = gcd(this.numerator, this.denominator);
@@ -149,7 +151,7 @@ public class Fraction {
     }
 
     /**
-     * @return Fraction as String in the format: n/d
+     * @return de.swerik.fraction.Fraction as String in the format: n/d
      */
     public String toString() {
         return this.numerator + "/" + this.denominator;

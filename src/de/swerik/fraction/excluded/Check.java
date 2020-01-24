@@ -1,3 +1,7 @@
+package de.swerik.fraction.excluded;
+
+import de.swerik.fraction.Fraction;
+
 public class Check {
     public static void main(String[] args) {
         Fraction a = new Fraction(1, 2);
