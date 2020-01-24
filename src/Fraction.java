@@ -70,14 +70,9 @@ public class Fraction {
 
     //reducing:
     public Fraction reduce() {
-        for (int i = 2; i <= Math.min(this.numerator, this.denominator); i++) {
-            if (((double) this.numerator) / i == (int) ((double) this.numerator / i) &&
-                    ((double) this.denominator) / i == (int) ((double) this.denominator / i)) {
-                this.numerator /= i;
-                this.denominator /= i;
-                i = 2;
-            }
-        }
+        long gcd = gcd(this.numerator, this.denominator);
+        this.numerator /= gcd;
+        this.denominator /= gcd;
         return this;
     }
 
