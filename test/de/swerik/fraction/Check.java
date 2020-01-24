@@ -1,4 +1,4 @@
-package de.swerik.fraction.excluded;
+package de.swerik.fraction;
 
 import de.swerik.fraction.Fraction;
 

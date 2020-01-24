@@ -34,6 +34,16 @@ public class Fraction {
         this.reduce();
     }
 
+    /**
+     * copies {@code newFraction} to this
+     *
+     * @param newFraction Fraction
+     */
+    private Fraction(Fraction newFraction) {
+        this.numerator = newFraction.getNumerator();
+        this.denominator = newFraction.getDenominator();
+    }
+
     // Operations with other de.swerik.fraction.Fraction:
 
     /**
@@ -41,13 +51,11 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction with {@code newFraction} added to it
      */
     public Fraction add(Fraction newFraction) {
-        long lcm = lcm(this.denominator, newFraction.getDenominator());
-//        System.out.println((lcm / this.denominator) * this.numerator);
-//        System.out.println((lcm / newFraction.getDenominator()) * newFraction.getNumerator());
-        this.numerator = (lcm / this.denominator) * this.numerator + (lcm / newFraction.getDenominator()) * newFraction.getNumerator();
-//        System.out.println(this.numerator);
-        this.denominator = lcm;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        long lcm = lcm(returnFraction.denominator, newFraction.getDenominator());
+        returnFraction.numerator = (lcm / returnFraction.denominator) * returnFraction.numerator + (lcm / newFraction.getDenominator()) * newFraction.getNumerator();
+        returnFraction.denominator = lcm;
+        return returnFraction.reduce();
     }
 
     /**
@@ -63,9 +71,10 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction multiplied by {@code newFraction}
      */
     public Fraction multiply(Fraction newFraction) {
-        this.numerator *= newFraction.getNumerator();
-        this.denominator *= newFraction.getDenominator();
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator *= newFraction.getNumerator();
+        returnFraction.denominator *= newFraction.getDenominator();
+        return returnFraction.reduce();
     }
 
     /**
@@ -73,9 +82,10 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction divided by {@code newFraction}
      */
     public Fraction divide(Fraction newFraction) {
-        this.numerator *= newFraction.getDenominator();
-        this.denominator *= newFraction.getNumerator();
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator *= newFraction.getDenominator();
+        returnFraction.denominator *= newFraction.getNumerator();
+        return returnFraction.reduce();
     }
 
     // Operations with primitive Types:
@@ -85,8 +95,9 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction multiplied by {@code number}
      */
     public Fraction add(long number) {
-        this.numerator += number * this.denominator;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator += number * returnFraction.denominator;
+        return returnFraction.reduce();
     }
 
     /**
@@ -94,8 +105,9 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction with {@code number} to it
      */
     public Fraction subtract(long number) {
-        this.numerator -= number * this.denominator;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator -= number * returnFraction.denominator;
+        return returnFraction.reduce();
     }
 
     /**
@@ -103,8 +115,9 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction subtracted by {@code number}
      */
     public Fraction multiply(long number) {
-        this.numerator *= number;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator *= number;
+        return returnFraction.reduce();
     }
 
     /**
@@ -112,29 +125,32 @@ public class Fraction {
      * @return this de.swerik.fraction.Fraction divided by {@code number}
      */
     public Fraction divide(long number) {
-        this.denominator *= number;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.denominator *= number;
+        return returnFraction.reduce();
     }
 
     /**
      * @return the sqareroot of the Fraction
      */
     public Fraction sqrt() {
-        Fraction tempA = new Fraction(Math.sqrt((double) this.numerator));
-        Fraction tempB = new Fraction(Math.sqrt((double) this.denominator));
+        Fraction returnFraction = new Fraction(this);
+        Fraction tempA = new Fraction(Math.sqrt((double) returnFraction.numerator));
+        Fraction tempB = new Fraction(Math.sqrt((double) returnFraction.denominator));
         tempA.divide(tempB);
-        this.numerator = tempA.getNumerator();
-        this.denominator = tempB.getNumerator();
-        return this.reduce();
+        returnFraction.numerator = tempA.getNumerator();
+        returnFraction.denominator = tempB.getNumerator();
+        return returnFraction.reduce();
     }
 
     /**
      * @return the Fraction to the power of 2
      */
     public Fraction pow2() {
-        this.numerator *= this.numerator;
-        this.denominator *= this.denominator;
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator *= returnFraction.numerator;
+        returnFraction.denominator *= returnFraction.denominator;
+        return returnFraction.reduce();
     }
 
     /**
@@ -142,9 +158,10 @@ public class Fraction {
      * @return the Fraction to the power of {@code n}
      */
     public Fraction pow(long n) {
-        this.numerator = (long) Math.pow((double) this.numerator, (double) n);
-        this.denominator = (long) Math.pow((double) this.denominator, (double) n);
-        return this.reduce();
+        Fraction returnFraction = new Fraction(this);
+        returnFraction.numerator = (long) Math.pow((double) returnFraction.numerator, (double) n);
+        returnFraction.denominator = (long) Math.pow((double) returnFraction.denominator, (double) n);
+        return returnFraction.reduce();
     }
 
     /**
